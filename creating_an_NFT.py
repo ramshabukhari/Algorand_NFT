@@ -24,18 +24,12 @@ def sign_and_send_transaction(algod_client, sender_pk, sender_sk, params,unit_na
     # Sign with secret key of creator
     stxn = txn.sign(sender_sk)
 
-        # Send the transaction to the network and retrieve the txid.
+    # Send the transaction to the network and retrieve the txid.
     txid = algod_client.send_transaction(stxn)
     print(txid)
     return txid
 
-        # Retrieve the asset ID of the newly created asset by first
-        # ensuring that the creation transaction was confirmed,
-        # then grabbing the asset id from the transaction.
 
-        # Wait for the transaction to be confirmed
-
-    
 def print_created_asset(algodclient, account, assetid):    
     # note: if you have an indexer instance available it is easier to just use this
     # response = myindexer.accounts(asset_id = assetid)
@@ -49,8 +43,6 @@ def print_created_asset(algodclient, account, assetid):
             print("Asset ID: {}".format(scrutinized_asset['index']))
             print(json.dumps(my_account_info['params'], indent=4))
             break
-
-
 
 
 if __name__ == '__main__':
@@ -70,7 +62,13 @@ if __name__ == '__main__':
     print_created_asset(algod_client, sender_pk, asset_id)
     print_asset_holding(algod_client, sender_pk, asset_id)
 
-"""     Transaction 5OSG6ZOOAZ7OILG6LT73RLOBZDUNYBOZGLSO32P366AYQBZPE2AQ confirmed in round 18471602.
+
+
+
+"""     
+Sample Output:
+
+Transaction 5OSG6ZOOAZ7OILG6LT73RLOBZDUNYBOZGLSO32P366AYQBZPE2AQ confirmed in round 18471602.
 Asset ID: 51493887
 {
     "clawback": "Y3GMBWMJ5LOKK27HYXC4IL66VL5K656MF4YFCOBI3RSZONQT5CICVDGVA4",
